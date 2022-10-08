@@ -1,0 +1,41 @@
+<%- include('./partials/head.ejs')%>
+<%- include('./partials/flash.ejs')%>
+
+    <h1>Add a new fish</h1>
+
+    <form method="post" action="/fish" enctype="multipart/form-data">
+ 
+    <label for="name">Name</label>
+
+    <br />
+
+    <input type ="text" name="name" id="name" value="<%fish.name%>" required />
+
+    <label for ="img">Image</label>
+
+    <input type="file" name="image" id="image" required />
+
+
+    <label for="locality">Locality</label>
+
+    <input type="text" name="locality" id="locality" required />
+
+    
+    <label for="bait">Bait</label>
+
+    <input type="text" name="bait" id="bait" required />
+
+    <label for="minimumSize">Minimum size</label>
+
+    <input type="minimumSize" name="minimum size" id="minimum size" required />
+
+    <label for="bagLimit">Bag limit</label>
+
+    <input type="bagLimit" name="bag limit" id="bag limit" required>
+
+    <input type="submit" value="add fish" />
+    
+    </form>
+
+</body>
+</html>
