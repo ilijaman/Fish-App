@@ -1,0 +1,15 @@
+<%- include('./partials/head.ejs')%>
+<%- include('./partials/flash.ejs')%>
+
+<h1> <%= fish.name%></h1>
+<p>
+    <img src = "<%= fish.img %>"class ="fish-images">
+
+
+    <a href="/fish/<%=fish._id%>/delete">Delete: <%=`${fish.name}`%></a>
+
+    <a href="/fish/<%=fish._id%>/edit">Edit : <%=`${fish.name}`%></a>
+
+    <a href = '/fish'>Return to homepage</a>
+
+</p>
