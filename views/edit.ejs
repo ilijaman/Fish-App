@@ -1,0 +1,36 @@
+<%- include('./partials/head.ejs')%>
+
+    <form method="post" action="/products/<%= fish._id %>?_method=PUT"
+        enctype="multipart/form-data">
+        
+        <label for="name">Name</label>
+
+        <br />
+
+        <input type ="text" name="name" id="name" value="<%fish.name%>"/>
+
+        <label for ="img">Image</label>
+
+        <input type="file" name="image" id="image"/>
+
+
+        <label for="locality">Locality</label>
+
+        <input type="text" name="locality" id="locality"/>
+
+        
+        <label for="bait">Bait</label>
+
+        <input type="text" name="bait" id="bait"/>
+
+        <label for="minimumSize">Minimum size</label>
+
+        <input type="minimumSize" name="minimum size" id="minimum size">
+
+        <label for="bagLimit">Bag limit</label>
+
+        <input type="bagLimit" name="bag limit" id="bag limit">
+
+        <input type="submit" value="save product" />
+        
+    </form>
