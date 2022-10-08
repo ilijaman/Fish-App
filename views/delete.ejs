@@ -1,0 +1,14 @@
+<%- include('./partials/head.ejs')%>
+
+    <h1>Are you sure you want to delete this fish?</h1>
+
+    <form action="/fish/<%= id %>?_method=delete" method="post">
+        <input type="submit" value="yes" />
+    </form>
+    <form action="/fish/" method="get">
+        <input type="submit" value="no, return home" />
+    </form>
+    <br>
+</body>
+
+</html>
