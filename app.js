@@ -11,7 +11,7 @@ const methodOverride = require('method-override')
 const User = require('./models/users')
 const Fish = require('./models/fish')
 const authController = require('./controllers/auth')
-const fishController = require('./controllers/fish')
+const fishController = require('./controllers/fish-routes')
 
 
 const app = express()
