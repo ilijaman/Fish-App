@@ -93,7 +93,33 @@ router.get('/seed', async (req, res) => {
             locality: 'State-wide',
             minimumSize: 'No minimum size',
             bagLimit: '10'
-        }
+        },
+        {
+            name: 'Cuttlefish',
+            img: 'https://portphillipmarinelife.net.au/images/species/species_389903.jpeg',
+            bait: 'Squid-jig',
+            locality: 'SE-Peninsula',
+            minimumSize: 'No minimum size',
+            bagLimit: '10'
+        },
+        {
+            name: 'Leatherjacket',
+            img: 'https://portphillipmarinelife.net.au/images/species/speciesHero_417890.jpeg',
+            bait: 'Bait',
+            locality: 'SE-Peninsula',
+            minimumSize: 'No minimum size',
+            bagLimit: '20'
+        },
+        {
+            name: 'Australian Salmon',
+            img: 'https://portphillipmarinelife.net.au/images/species/speciesHero_519731.jpeg',
+            bait: 'Bait',
+            locality: 'SE-Peninsula',
+            minimumSize: '21cm',
+            bagLimit: '20'
+        },
+
+
     ]
 
 
