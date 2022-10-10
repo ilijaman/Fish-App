@@ -1,20 +1,14 @@
 <%- include('./partials/head.ejs')%>
 
 <%- include('./partials/flash.ejs')%>
-    <h1>Fish</h1>
+    <h1>Fish Library</h1>
 
-    <% for (let index=0; index < bookmarks.length; index++ ) { %>
-        <p>
-            <%= fish[index].name %>
-                <form action="/fish/<%= fish[index]._id %>/delete" method="get">
-                    <input type="submit" value="Delete" />
-                </form>
-        </p>
-        <p>
-            <a href="/fish/<%= fish[index]._id %>/edit">edit</a>
-        </p>
-        <a href="/fish/<%=fish[index]._id%>">View <%=`${fish[index].name}`%></a>
-        <% } %>
+    <p>
+        <% fish.forEach((fish)=> { %>
+            <a href="/fish/<%= fish._id %>"><img src="<%= fish.img %>" class = "fish-images"></a>
+            <%= fish.name %>
+                <% }) %>
+    </p>
 
 
 

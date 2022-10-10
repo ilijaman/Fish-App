@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(177, 215, 215);
+    margin: 0 400px 0 400px;
+}
+
+#main-title {
+    text-align: center;
+}
+
+
+.fish-images {
+    max-width: 300px;
+    max-height: 300px;
+}

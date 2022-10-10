@@ -1,8 +1,24 @@
 const express = require('express')
+const ensureLogin = require('connect-ensure-login')
 
 const upload = require('../middlewares/upload')
 const Fish = require('../models/fish')
 const router = express.Router()
+
+router.use(ensureLogin.ensureLoggedIn())
+
+
+//Index route
+
+router.get('/fish', async (req, res) => {
+    const fish = await Fish.find()
+    console.log(req.session)
+    res.render('index.ejs', {
+        fish: fish,
+        tabTitle: 'Home'
+    })
+})
+
 
 
 //New route
@@ -54,7 +70,7 @@ router.put('/fish/:id', async (req, res) => {
 
 //Confirm-delete route
 
-router.get('/bookmarks/:id/delete', (req, res) => {
+router.get('/fish/:id/delete', (req, res) => {
     const id = req.params.id
     res.render('delete.ejs', {
         id: id, 
@@ -65,7 +81,7 @@ router.get('/bookmarks/:id/delete', (req, res) => {
 
 //Delete route
 
-router.delete('/bookmarks/:id', async (req, res) => {
+router.delete('/fish/:id', async (req, res) => {
     const fish = await Fish.findByIdAndRemove(req.params.id)
     console.log('Deleted fish', fish)
     res.redirect('/fish')
@@ -81,7 +97,7 @@ router.get('/fish/:id', async (req, res) => {
         tabTitle: fish.name
     })
   })
-  
+
 
 module.exports = router
 
@@ -96,7 +112,7 @@ router.get('/seed', async (req, res) => {
             name: 'Snapper',
             img: 'https://ilovefishing.com.au/wp-content/uploads/2016/03/Snapper-under-water-shot.jpg',
             bait: ['Soft-plastics', 'Pilchards','Squid', 'Prawn', 'Worms', 'Chicken', 'Pipis'],
-            locality: 'State-wide',
+            locality: ['State-wide'],
             minimumSize: '28cm',
             bagLimit: '10'
         },
@@ -104,7 +120,7 @@ router.get('/seed', async (req, res) => {
             name: 'Flathead',
             img: 'https://bassanglermag.com/wp-content/uploads/how-to-fish-for-flathead-fish.png',
             bait: ['Soft-plastics', 'Prawn', 'Squid', 'Pilchards'],
-            locality: 'State-wide',
+            locality: ['State-wide'],
             minimumSize: '30cm',
             bagLimit: '5'
         },
@@ -120,7 +136,7 @@ router.get('/seed', async (req, res) => {
             name: 'Bream',
             img: 'https://media.australian.museum/media/dd/images/Acanthopagrus_australis.width-800.bef3724.jpg',
             bait: ['Soft-plastics', 'Bread', 'Chicken'],
-            locality: 'State-wide',
+            locality: ['State-wide'],
             minimumSize: '28cm',
             bagLimit: '10'
         },
@@ -141,18 +157,10 @@ router.get('/seed', async (req, res) => {
             bagLimit: '10'
         },
         {
-            name: 'Snook',
-            img: 'https://fishesofaustralia.net.au/Images/Image/SphyraenaNovaehollandRLS.jpg',
-            bait: 'Soft-plastics', 
-            locality: 'State-wide',
-            minimumSize: '30cm',
-            bagLimit: '10'
-        },
-        {
             name: 'Gummy-shark',
             img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuPlFhFNvtQDEUouHOIVld11oP_cB1JIrAVw&usqp=CAU',
             bait: ['Salmon', 'Squid', 'Pilchard'],
-            locality: 'State-wide',
+            locality: ['State-wide'],
             minimumSize: '45cm body',
             bagLimit: '12'
         },
@@ -160,17 +168,9 @@ router.get('/seed', async (req, res) => {
             name: 'Mackerel',
             img: 'https://fishesofaustralia.net.au/images/image/GrammatorcynBicarinatRobinLawsWall.jpg',
             bait: ['Silverfish', 'Baitfish', 'Sabiki'],
-            locality: 'SE-Peninsula',
+            locality: ['SE-Peninsula'],
             minimumSize: 'No minimum size',
             bagLimit: '40'
-        },
-        {
-            name: 'Gurnard',
-            img: 'https://portphillipmarinelife.net.au/images/species/speciesHero_519769.jpeg',
-            bait: 'N/A',
-            locality: 'State-wide',
-            minimumSize: 'No minimum size',
-            bagLimit: '10'
         },
         {
             name: 'Cuttlefish',
@@ -192,7 +192,7 @@ router.get('/seed', async (req, res) => {
             name: 'Australian Salmon',
             img: 'https://portphillipmarinelife.net.au/images/species/speciesHero_519731.jpeg',
             bait: ['Metal lures', 'Soft-plastics', 'Pilchards', 'Squid', 'Prawn'],
-            locality: 'Statewide',
+            locality: ['Statewide'],
             minimumSize: '21cm',
             bagLimit: '20'
         },

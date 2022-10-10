@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
         res.redirect('/register')
     }
     // console.log(req.body.username, req.body.password)
-    //User.register({username: 'dandy'}, 'password')
+    // User.register({username: 'dandy'}, 'password')
 })
 
 
