@@ -11,6 +11,7 @@ router.get('/fish/new', (req, res) => {
     res.render('new.ejs')
 })
 
+
 //Create route
 
 router.post('/fish', upload.single('image'), async (req, res) => {
@@ -26,6 +27,29 @@ router.post('/fish', upload.single('image'), async (req, res) => {
         res.redirect('/fish/new')
     }
 })
+
+
+//Edit route
+
+router.get('/fish/:id/edit', async (req, res) => {
+    const fish = await Fish.findById(req.params.id)
+    res.render('edit.ejs', {
+        fish: fish,
+        tabTitle: `Update: ${fish.name}`
+    })
+})
+
+
+//Update route
+
+router.put('/fish/:id', async (req, res) => {
+    const fish = await Fish.findByIdAndUpdate(req.params.id, req.body,
+        { new: true }
+    )
+    console.log('updated fish', fish)
+    res.redirect('/fish')
+})
+
 
 
 
