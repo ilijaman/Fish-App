@@ -5,11 +5,24 @@
 <p>
     <img src = "<%= fish.img %>"class ="fish-images">
 
-
-    <a href="/fish/<%=fish._id%>/delete">Delete: <%=`${fish.name}`%></a>
-
-    <a href="/fish/<%=fish._id%>/edit">Edit : <%=`${fish.name}`%></a>
-
-    <a href = '/fish'>Return to homepage</a>
+    <br>
+    <a href = "/fish/<%=fish._id%>/delete" id = "delete-link">Delete: <%=`${fish.name}`%></a>
+        <br>
+    <a href="/fish/<%=fish._id%>/edit" id = "edit-link">Edit : <%=`${fish.name}`%></a>
+        <br>
+    <a href = '/fish' id = "home-link">Return to homepage</a>
 
 </p>
+<div class = "fish-details">
+    <h3>Details</h3>
+    <p>
+        <%=fish.locality%>
+        <br>
+        <%=fish.bait%>
+        <br>
+        <%=fish.minimumSize%>
+        <br>
+        <%=fish.bagLimit%>
+        
+    </p>
+</div>

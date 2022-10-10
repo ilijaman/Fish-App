@@ -1,5 +1,28 @@
-<%- include('./partials/head.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>Welcome to Fish-in' Melbourne</h1>
-<p><a href="/login">Login</a></p>
-<p><a href="/register">Register</a></p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title> Fish-in' Vic <%= typeof tabTitle==='undefined' ? '' : tabTitle %>
+    </title>
+</head>
+
+<body>
+
+    <% if (req.user) { %>
+        <nav>
+            <form method="post" action="/logout">
+                <input type="submit" value="logout" />
+            </form>
+            <% } else { %>
+                <p>Sign in to visit the main site. If you don't have an account already, sign up here. <a
+                        href="/register">Register</a></p>
+        </nav>
+        <% } %>
+
+
+            <h1>Welcome to Fishin' Victoria</h1>
+            <p><a href="/login">Login</a></p>

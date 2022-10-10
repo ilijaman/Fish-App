@@ -32,6 +32,7 @@ router.post('/register', async (req, res) => {
 router.get('/login', (req, res) => {
     console.log(req.isAuthenticated())
     if (req.isAuthenticated()) {
+        res.locals.user = req.user
         res.redirect('back')
     } else {
         res.render('login.ejs')
