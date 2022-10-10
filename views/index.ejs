@@ -2,7 +2,7 @@
 
 <%- include('./partials/flash.ejs')%>
     <h1>Fish Library</h1>
-
+<%console.log(locals)%>
     <p>
         <% fish.forEach((fish)=> { %>
             <a href="/fish/<%= fish._id %>"><img src="<%= fish.img %>" class = "fish-images"></a>

@@ -30,15 +30,17 @@ router.get('/fish/new', (req, res) => {
 
 //Create route
 
-router.post('/fish', upload.single('image'), async (req, res) => {
+router.post('/fish', upload.single('img'), async (req, res) => {
+    console.log(req.body)
     try {
         console.log(req.file)
-        req.body.imageURL = req.file.path
+        req.body.img = req.file.path
         await Fish.create(req.body)
         req.flash('success', 'Fish added')
         res.redirect('/fish')
     }
     catch (error) {
+        console.log(error)
         req.flash('error', 'this cannot be added')
         res.redirect('/fish/new')
     }
