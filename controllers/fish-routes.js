@@ -52,6 +52,40 @@ router.put('/fish/:id', async (req, res) => {
 
 
 
+//Confirm-delete route
+
+router.get('/bookmarks/:id/delete', (req, res) => {
+    const id = req.params.id
+    res.render('delete.ejs', {
+        id: id, 
+        tabTitle: 'delete',
+    })
+})
+
+
+//Delete route
+
+router.delete('/bookmarks/:id', async (req, res) => {
+    const fish = await Fish.findByIdAndRemove(req.params.id)
+    console.log('Deleted fish', fish)
+    res.redirect('/fish')
+})
+
+
+//Show route
+
+router.get('/fish/:id', async (req, res) => {
+    const fish = await Fish.findById(req.params.id)
+    res.render('show.ejs', {
+        fish: fish,
+        tabTitle: fish.name
+    })
+  })
+  
+
+module.exports = router
+
+
 
 
 
