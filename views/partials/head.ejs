@@ -12,12 +12,16 @@
 
 <body>
     <nav>
+        <% if (user) { %>
         <a href="/fish/new"> Add a fish</a>
         <form method="post" action="/logout">
             <input type="submit" value="logout" />
         </form>
-        <a href="/login">Login</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+        <% } %>
     </nav>
+
 
 
     <a href="/fish">Fish-in' Victoria </a>

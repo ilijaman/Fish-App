@@ -7,8 +7,10 @@ const session = require('express-session')
 const flash = require('express-flash')
 const mongoDBSession = require('connect-mongodb-session')
 const methodOverride = require('method-override')
+const staticPages = require('./controllers/pages')
 
-const { notFoundHandler } = require('./middlewares/error-handlers')
+const { notFoundHandler, errorHandler } = require('./middlewares/error-handlers')
+const userCheck = require('./middlewares/user-check')
 const User = require('./models/users')
 const Fish = require('./models/fish')
 const authController = require('./controllers/auth')
@@ -50,13 +52,13 @@ console.log(`${new Date()} ${req.method} ${req.path}`)
 })
 
 
-app.get('/', (req, res) => {
-    res.render('home.ejs')
-})
 
+app.use(userCheck)
+app.use(staticPages)
 app.use(authController)
 app.use(fishController)
 app.use(notFoundHandler)
+app.use(errorHandler)
 
 
 

@@ -50,11 +50,18 @@ router.post('/fish', upload.single('img'), async (req, res) => {
 //Edit route
 
 router.get('/fish/:id/edit', async (req, res) => {
-    const fish = await Fish.findById(req.params.id)
-    res.render('edit.ejs', {
-        fish: fish,
-        tabTitle: `Update: ${fish.name}`
-    })
+    try {
+        const fish = await Fish.findById(req.params.id)
+        if (!fish) {
+            throw new Error('Not found')
+        }
+        res.render('edit.ejs', {
+            fish: fish,
+            tabTitle: `Update: ${fish.name}`
+        })
+    } catch {
+        next()
+    }
 })
 
 
@@ -75,7 +82,7 @@ router.put('/fish/:id', async (req, res) => {
 router.get('/fish/:id/delete', (req, res) => {
     const id = req.params.id
     res.render('delete.ejs', {
-        id: id, 
+        id: id,
         tabTitle: 'delete',
     })
 })
@@ -92,13 +99,22 @@ router.delete('/fish/:id', async (req, res) => {
 
 //Show route
 
-router.get('/fish/:id', async (req, res) => {
-    const fish = await Fish.findById(req.params.id)
-    res.render('show.ejs', {
-        fish: fish,
-        tabTitle: fish.name
-    })
-  })
+router.get('/fish/:id', async (req, res, next) => {
+    try {
+        const fish = await Fish.findById(req.params.id)
+        if (fish) {
+            res.render('show.ejs', {
+                fish: fish,
+                tabTitle: fish.name
+            })
+        } else {
+            throw new Error('Fish not found')
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 
 module.exports = router
@@ -113,7 +129,7 @@ router.get('/seed', async (req, res) => {
         {
             name: 'Snapper',
             img: 'https://ilovefishing.com.au/wp-content/uploads/2016/03/Snapper-under-water-shot.jpg',
-            bait: ['Soft-plastics', 'Pilchards','Squid', 'Prawn', 'Worms', 'Chicken', 'Pipis'],
+            bait: ['Soft-plastics', 'Pilchards', 'Squid', 'Prawn', 'Worms', 'Chicken', 'Pipis'],
             locality: ['State-wide'],
             minimumSize: '28cm',
             bagLimit: '10'
