@@ -8,6 +8,7 @@ const flash = require('express-flash')
 const mongoDBSession = require('connect-mongodb-session')
 const methodOverride = require('method-override')
 
+const { notFoundHandler } = require('./middlewares/error-handlers')
 const User = require('./models/users')
 const Fish = require('./models/fish')
 const authController = require('./controllers/auth')
@@ -55,6 +56,7 @@ app.get('/', (req, res) => {
 
 app.use(authController)
 app.use(fishController)
+app.use(notFoundHandler)
 
 
 

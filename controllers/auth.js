@@ -31,6 +31,7 @@ router.post('/register', async (req, res) => {
 
 router.get('/login', (req, res) => {
     console.log(req.isAuthenticated())
+    console.log(req)
     if (req.isAuthenticated()) {
         res.locals.user = req.user
         res.redirect('back')
