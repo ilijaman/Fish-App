@@ -1,0 +1,15 @@
+<%- include('./partials/head.ejs')%>
+
+<form method="post" action="/test" enctype="multipart/form-data">
+ 
+    <label for="fish">Name</label>
+
+    <input type ="text" name="fish" id="fish" required />
+
+    <label for ="img">Img</label>
+
+    <input type="file" name="img" id="img" required />
+
+    <input type="submit" value="add fish" />
+    
+    </form>

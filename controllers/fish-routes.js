@@ -3,6 +3,9 @@ const ensureLogin = require('connect-ensure-login')
 
 const upload = require('../middlewares/upload')
 const Fish = require('../models/fish')
+const Catches = require('../models/catch')
+const Users = require('../models/users')
+const { render } = require('ejs')
 const router = express.Router()
 
 router.use(ensureLogin.ensureLoggedIn())
@@ -45,6 +48,7 @@ router.post('/fish', upload.single('img'), async (req, res) => {
         res.redirect('/fish/new')
     }
 })
+
 
 
 //Edit route
@@ -96,6 +100,38 @@ router.delete('/fish/:id', async (req, res) => {
     res.redirect('/fish')
 })
 
+//Community route
+
+router.get('/test', (req, res) => {
+    res.render("upload.ejs")
+})
+
+router.get('/test/community', async (req, res) => {
+    console.log(req.user)
+    const catches = await Catches.find()
+    res.render("community.ejs", {
+        catches
+    })
+})
+
+router.get('/test/:username', async (req, res) => {
+    const users = await Users.findOne({
+       username: req.params.username
+    }) .populate("catches")
+    res.send(users)
+})
+
+
+router.post('/test', upload.single("img"), async (req, res) => {
+    req.body.imgURL = req.file.path
+    console.log(req.body, req.user.save)
+    req.body.author = req.user.username
+    const fishCatches = await Catches.create(req.body)
+    req.user.catches.push(fishCatches)
+    await req.user.save()
+    res.redirect('/test/community')
+} )
+
 
 //Show route
 
@@ -111,7 +147,7 @@ router.get('/fish/:id', async (req, res, next) => {
             throw new Error('Fish not found')
         }
     } catch (error) {
-        next(error)
+        next()
     }
 })
 
