@@ -1,2 +1,13 @@
 <%- include('./partials/head.ejs')%>
 
+    <div class="user-profile">
+        <% catches.forEach((katch)=> { %>
+            <br>
+            <a href="/community/<%=user.username%>/<%=catches._id%>"><img src="<%= katch.imgURL%>" class="community-img"></a>
+            <br>
+            <p class ="user-fish-caught">
+                <%= katch.fish%>
+            </p>
+            <br>
+            <% }) %>
+    </div>

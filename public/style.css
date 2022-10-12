@@ -7,15 +7,18 @@ body {
     text-align: center;
 }
 
-
-.fish-images {
-    max-width: 300px;
-    max-height: 300px;
-}
-
 .slide {
     max-width: 400px;
     max-height: 400px;
     margin: 300px 0 0 0;
 }
 
+.fish-images-index {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.fish-show {
+    max-width: 400px;
+    max-height: 400px;
+}

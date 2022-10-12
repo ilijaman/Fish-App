@@ -76,6 +76,7 @@ router.put('/fish/:id', async (req, res) => {
         { new: true }
     )
     console.log('updated fish', fish)
+    req.flash(`${fish} updated`)
     res.redirect('/fish')
 })
 
@@ -88,7 +89,9 @@ router.get('/fish/:id/delete', (req, res) => {
     res.render('delete.ejs', {
         id: id,
         tabTitle: 'delete',
+        route: 'delete'
     })
+    req.flash(`Fish successfully removed`)
 })
 
 
@@ -100,7 +103,29 @@ router.delete('/fish/:id', async (req, res) => {
     res.redirect('/fish')
 })
 
-//Community route
+
+//Community routes
+
+
+//user route/ + user delete-----------------------------------------------------------
+router.get('/community/:username/:catch/delete', (req, res) => {
+    const userCatch= req.params.catch
+    res.render('catch-delete.ejs', {
+        userCatch,
+        tabTitle: 'delete catch'
+    })
+    req.flash('Catch deleted')
+})
+
+router.get('/community/:username/:catch', (req, res) => {
+    const katch = req.params.catch
+    res.render('catch.ejs', {
+        katch,
+        tabTitle: `${user.username} catch`
+    })
+})
+
+// -----------------------------------------------------
 
 router.get('/uploadcatch', (req, res) => {
     res.render("upload.ejs")
@@ -115,13 +140,14 @@ router.get('/community', async (req, res) => {
 })
 
 router.get('/community/:username', async (req, res) => {
+    const catches = await Catches.find()
     const users = await Users.findOne({
        username: req.params.username
     }) .populate("catches")
-    res.send(users)
-    // res.render("userprofile.ejs", { //res.send(users)
-    // users
-    // })
+    res.render("userprofile.ejs", {
+    users,
+    catches
+    })
 })
 
 
