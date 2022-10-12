@@ -18,7 +18,7 @@
         <% if (user) { %>
         <a href="/fish/new"> Add a fish</a>
         <form method="post" action="/logout">
-            <input type="submit" value="logout" />
+            <input type="submit" value=<%=`Logout ${user.username}`%>/>
         </form>
         <% } else { %>
             <a href="/login">Login</a>

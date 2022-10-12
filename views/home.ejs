@@ -20,14 +20,13 @@
             <form method="post" action="/logout">
                 <input type="submit" value="logout" />
             </form>
-            <a href ="/fish">Return to homepage</a>
             <% } else { %>
-                <p>Sign in to visit the main site. If you don't have an account already, sign up here. <a
+                <p>Sign in to interact with the library and gain access to the community page. If you don't have an account already, sign up here. <a
                         href="/register">Register</a></p>
                         <p><a href="/login">Login</a></p>
         </nav>
         <% } %>
-
+        <a href ="/fish">Return to homepage</a>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

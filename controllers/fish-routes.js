@@ -8,8 +8,6 @@ const Users = require('../models/users')
 const { render } = require('ejs')
 const router = express.Router()
 
-router.use(ensureLogin.ensureLoggedIn())
-
 
 //Index route
 
@@ -22,6 +20,8 @@ router.get('/fish', async (req, res) => {
     })
 })
 
+
+router.use(ensureLogin.ensureLoggedIn())
 
 
 //New route
@@ -119,13 +119,13 @@ router.get('/community/:username', async (req, res) => {
        username: req.params.username
     }) .populate("catches")
     res.send(users)
-    // res.render("user.ejs", { //res.send(users)
+    // res.render("userprofile.ejs", { //res.send(users)
     // users
     // })
 })
 
 
-router.post('/uploadcatch', upload.single("img"), async (req, res) => {
+router.post('/community', upload.single("img"), async (req, res) => {
     req.body.imgURL = req.file.path
     console.log(req.body, req.user.save)
     req.body.author = req.user.username
