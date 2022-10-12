@@ -102,11 +102,11 @@ router.delete('/fish/:id', async (req, res) => {
 
 //Community route
 
-router.get('/test', (req, res) => {
+router.get('/uploadcatch', (req, res) => {
     res.render("upload.ejs")
 })
 
-router.get('/test/community', async (req, res) => {
+router.get('/community', async (req, res) => {
     console.log(req.user)
     const catches = await Catches.find()
     res.render("community.ejs", {
@@ -114,22 +114,25 @@ router.get('/test/community', async (req, res) => {
     })
 })
 
-router.get('/test/:username', async (req, res) => {
+router.get('/community/:username', async (req, res) => {
     const users = await Users.findOne({
        username: req.params.username
     }) .populate("catches")
     res.send(users)
+    // res.render("user.ejs", { //res.send(users)
+    // users
+    // })
 })
 
 
-router.post('/test', upload.single("img"), async (req, res) => {
+router.post('/uploadcatch', upload.single("img"), async (req, res) => {
     req.body.imgURL = req.file.path
     console.log(req.body, req.user.save)
     req.body.author = req.user.username
     const fishCatches = await Catches.create(req.body)
     req.user.catches.push(fishCatches)
     await req.user.save()
-    res.redirect('/test/community')
+    res.redirect('/community')
 } )
 
 

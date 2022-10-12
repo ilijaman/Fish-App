@@ -1,9 +1,14 @@
-<p>
-    <% catches.forEach((katch)=> { %>
-        <%= katch.fish%>
-        <br>
-            <a><%= katch.author%></a>
-            <br>
-                <%= katch.imgURL%>
-                    <% }) %>
-</p>
+<%- include('./partials/head.ejs')%>
+
+    <div class="community-post">
+        <% catches.forEach((katch)=> { %>
+                <br>
+                <a href = "/views/ src="<%= katch.imgURL%>" class="community-img">
+                <br>
+                <br>
+                <a>
+                    <%= katch.author%>: <%= katch.fish%>
+                </a>
+                <br>
+                <% }) %>
+    </div>
