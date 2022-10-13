@@ -1,10 +1,16 @@
 body {
-    background-color: rgb(177, 215, 215);
-    margin: 0 400px 0 400px;
+    background-color: rgb(0, 10, 35);
+    font-family: 'Alkalami', serif;
+    color:rgb(198, 228, 255);
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 0.2fr 5fr 1fr;
 }
 
-#main-title {
+.main-title {
     text-align: center;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
 }
 
 .slide {
@@ -13,12 +19,93 @@ body {
     margin: 300px 0 0 0;
 }
 
+.container {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
 .fish-images-index {
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 8px;
+    justify-content: space-around;
+    flex-grow: 2;
 }
 
 .fish-show {
-    max-width: 400px;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
     max-height: 400px;
+    max-width: 400px;
+    border-radius: 5px;
+    place-items: center;
+}
+
+
+.fish-details {
+    grid-column: 2 / 2;
+    grid-row: 2 / 3;
+    margin: 0 0 0 450px;
+}
+
+.show-name {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    max-height: 100px;
+    max-width: 200px;
+}
+
+.partial-nav {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+a {   
+    color: rgb(41, 134, 200);   
+}
+
+a:active {
+    color: rgb(61, 44, 116);
+}
+
+a[tabindex]:focus {
+    color:rgb(42, 178, 223);
+    outline: none;
+}
+
+.delete-form {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#nav-home {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+}
+
+.showfish {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.form {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    margin: 0 300px 0 300px;
+}
+
+.login-form {
+    grid-row: 2 /3;
+    grid-column: 2 / 3;
+    margin: 50px 0 0 270px;
+}
+
+.user-profile {
+    grid-column: 2 / 3;
+    grid-row: 2/ 3;
 }

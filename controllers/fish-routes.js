@@ -108,20 +108,33 @@ router.delete('/fish/:id', async (req, res) => {
 
 
 //user route/ + user delete-----------------------------------------------------------
-router.get('/community/:username/:catch/delete', (req, res) => {
-    const userCatch= req.params.catch
-    res.render('catch-delete.ejs', {
-        userCatch,
-        tabTitle: 'delete catch'
-    })
-    req.flash('Catch deleted')
+router.delete('/community/:username/:catch', async (req, res) => {
+    const katch = await Catches.findByIdAndRemove(req.params.catch)
+    console.log('Deleted catch', katch)
+    res.redirect(`/community/${req.user.username}`)
 })
 
-router.get('/community/:username/:catch', (req, res) => {
+router.get('/community/:username/:catch/delete', (req, res) => {
+    const user = req.user
     const katch = req.params.catch
-    res.render('catch.ejs', {
+    res.render('catch-delete.ejs', {
+        user,
         katch,
-        tabTitle: `${user.username} catch`
+        tabTitle: 'delete catch'
+ })
+})
+
+
+
+router.get('/community/:username/:catch', async (req, res) => {
+    const catches = await Catches.findById(req.params.catch)
+    const user = req.user._id.toString()
+    console.log(user)
+    const dbUser = await Users.findById(user)
+    res.render('catch.ejs', {
+        catches,
+        dbUser
+        // tabTitle: `${user.username} catch`
     })
 })
 
@@ -140,13 +153,12 @@ router.get('/community', async (req, res) => {
 })
 
 router.get('/community/:username', async (req, res) => {
-    const catches = await Catches.find()
     const users = await Users.findOne({
        username: req.params.username
     }) .populate("catches")
+    console.log('userprofile', users)
     res.render("userprofile.ejs", {
-    users,
-    catches
+    users
     })
 })
 

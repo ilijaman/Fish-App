@@ -1,0 +1,8 @@
+<%- include('./partials/head.ejs')%>
+
+<h1 class="username-catchejs"></h1>
+<p>
+    <img src="<%=catches.imgURL%>">
+
+    <a href="/community/<%=user._id%>/<%=catches._id%>/delete"><%=`Delete: ${catches.fish}`%></a>
+

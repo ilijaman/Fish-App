@@ -1,0 +1,13 @@
+<%- include('./partials/head.ejs')%>
+
+<h1 class="main-title">Are you sure you want to delete this post?</h1>
+
+<div class="form">
+<form action="/community/<%=user._id%>/<%=katch%>?_method=delete" method="post">
+    <input type="submit" value="yes" />
+</form>
+<form action="/community" method="get">
+    <input type="submit" value="no, return to community page" />
+</form>
+</div>
+<br>

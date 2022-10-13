@@ -1,9 +1,9 @@
 <%- include('./partials/head.ejs')%>
 <%- include('./partials/flash.ejs')%>
 
-<h1> <%= fish.name%></h1>
-<p>
-    <img src = "<%= fish.img %>"class ="fish-show">
+<h1 class ="show-name"> <%= fish.name%></h1>
+<div class="showfish">
+    <img src = "<%= fish.img %>" class ="fish-show">
 
     <br>
     <a href = "/fish/<%=fish._id%>/delete" id = "delete-link">Delete: <%=`${fish.name}`%></a>
@@ -11,8 +11,8 @@
     <a href="/fish/<%=fish._id%>/edit" id = "edit-link">Edit : <%=`${fish.name}`%></a>
         <br>
     <a href = '/fish' id = "home-link">Return to library</a>
+</div>
 
-</p>
 <div class = "fish-details">
     <h3>Details</h3>
     <p>

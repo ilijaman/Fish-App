@@ -1,9 +1,11 @@
 <%- include('./partials/head.ejs')%>
 
+<h1 class="main-title"><%=`${user.username}'s posts`%></h1>
+
     <div class="user-profile">
-        <% catches.forEach((katch)=> { %>
+        <% users.catches.forEach((katch)=> { %>
             <br>
-            <a href="/community/<%=user.username%>/<%=catches._id%>"><img src="<%= katch.imgURL%>" class="community-img"></a>
+            <a href="/community/<%=users.username%>/<%=katch._id%>"><img src="<%= katch.imgURL%>" class="community-img"></a>
             <br>
             <p class ="user-fish-caught">
                 <%= katch.fish%>
