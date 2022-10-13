@@ -24,7 +24,7 @@
     <div class="community-post">
         <% catches.forEach((katch)=> { %>
                 <br>
-                <a href = "/community/<%=user.username%>"><img src="<%= katch.imgURL%>" class="community-img"></a>
+                <a href = "/community/<%=katch.author%>"><img src="<%= katch.imgURL%>" class="community-img"></a>
                 <br>
                 <a class="community-author">
                     <strong><%= katch.author%>:</strong> <%= katch.fish%>

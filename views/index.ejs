@@ -14,7 +14,7 @@
 
     <body>
         <h1 class="main-title">Fish Library</h1>
-        <nav id="nav-home">
+        <nav class="nav-home">
             <% if (user) { %>
                 <p>
                     <%=`Welcome ${user.username}`%>
@@ -28,7 +28,9 @@
 
 
                     <% } else { %>
-                        <nav><a href="/register">Register an account</a></nav>
+                        <nav><a href="/register">Register an account</a>
+                            <br>
+                        <a href="/login">Login</a></nav>
                         <% } %>
         </nav>
 

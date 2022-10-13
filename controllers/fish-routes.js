@@ -147,14 +147,16 @@ router.get('/uploadcatch', (req, res) => {
 router.get('/community', async (req, res) => {
     console.log(req.user)
     const catches = await Catches.find()
+    const users = await Users.find()
     res.render("community.ejs", {
-        catches
+        catches,
+        users
     })
 })
 
 router.get('/community/:username', async (req, res) => {
     const users = await Users.findOne({
-       username: req.params.username
+    username: req.params.username
     }) .populate("catches")
     console.log('userprofile', users)
     res.render("userprofile.ejs", {

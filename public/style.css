@@ -125,6 +125,16 @@ a[tabindex]:focus {
     max-height: 400px;
 }
 
+.userprofile-img {
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0 0 0 420px;
+}
+
+.user-fish-caught {
+    margin: 0 0 0 420px;
+}
+
 .community-author {
     text-align: center
 }
@@ -150,7 +160,15 @@ a[tabindex]:focus {
     grid-column: 2 / 3;
 }
 .home-img {
-    max-width: 300px;
-    max-height: 300px;
-    margin: 130px 0 0 400px;
+    max-width: 100%;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    max-height: 100%;
+    margin: 170px 0 0 0;
+}
+
+#nav-userprofile {
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
