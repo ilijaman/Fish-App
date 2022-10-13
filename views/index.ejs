@@ -13,38 +13,42 @@
 <%- include('./partials/flash.ejs')%>
 
     <body>
-    <h1 class="main-title">Fish Library</h1>
-    <nav id="nav-home">
-        <% if (user) { %>
-            <p><%=`Welcome ${user.username}`%></p> 
-            <a href="/fish/new"> Add a fish</a>
-            <br> 
-            <a href="/community">Community page</a>
-            <br>
-            <form method="post" action="/logout">
-            <input type="submit" value=<%=`Logout ${user.username}`%>/>
-          
+        <h1 class="main-title">Fish Library</h1>
+        <nav id="nav-home">
+            <% if (user) { %>
+                <p>
+                    <%=`Welcome ${user.username}`%>
+                </p>
+                <a href="/fish/new"> Add a fish</a>
+                <br>
+                <a href="/community">Community page</a>
+                <br>
+                <form method="post" action="/logout">
+                    <input type="submit" value=<%=`Logout ${user.username}`%>/>
 
-        <% } else { %>
-            <nav><a href="/register">Register an account</a></nav>
-        <% } %>
-    </nav>
+
+                    <% } else { %>
+                        <nav><a href="/register">Register an account</a></nav>
+                        <% } %>
+        </nav>
 
         <div class="container">
 
-            <%console.log(locals)%>
 
-
-                <p>
-                    <% fish.forEach((fish)=> { %>
+    
+                <% fish.forEach((fish)=> { %>
+                    <div class="container-imgs">
                         <a href="/fish/<%= fish._id %>"><img src="<%= fish.img %>" class="fish-images-index"></a>
-                        <%= fish.name %>
-                            <% }) %>
-                </p>
+                        <div class="text-block">
+                            <%= fish.name %>
+                        </div>
+                        <% }) %>
+                    </div>
+          
 
 
 
 
 
-                <a href="/fish/0/First"></a>
+            <a href="/fish/0/First"></a>
         </div>

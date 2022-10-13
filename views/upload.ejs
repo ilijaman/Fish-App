@@ -1,15 +1,19 @@
 <%- include('./partials/head.ejs')%>
 
-<form method="post" action="/community" enctype="multipart/form-data">
+<form method="post" action="/community" enctype="multipart/form-data" class="form">
  
     <label for="fish">Name</label>
 
     <input type ="text" name="fish" id="fish" required />
 
+    <br>
+
     <label for ="img">Img</label>
 
     <input type="file" name="img" id="img" required />
 
-    <input type="submit" value="add fish" />
+    <br>
+
+    <input type="submit" value="add fish" class="submit-btn"/>
     
     </form>

@@ -2,58 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href ="style.css" rel = "stylesheet">
-    <link href="/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Alkalami&display=swap" rel="stylesheet">
-    <title> Fish-in' Vic <%= typeof tabTitle==='undefined' ? '' : tabTitle %>
-    </title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alkalami&display=swap" rel="stylesheet">
+  <title> Fish-in' Vic <%= typeof tabTitle==='undefined' ? '' : tabTitle %>
+  </title>
 </head>
 
 <body>
 
+  <h1 class="main-title">Welcome to Fishin' Victoria</h1>
+  <div id="home-container">
     <% if (user) { %>
-        <nav>
-            <form method="post" action="/logout">
-                <input type="submit" value="logout" />
-            </form>
-            <% } else { %>
-                <p>Sign in to interact with the library and gain access to the community page. If you don't have an account already, sign up here. <a
-                        href="/register">Register</a></p>
-                        <p><a href="/login">Login</a></p>
-        </nav>
-        <% } %>
-        <a href ="/fish">Return to homepage</a>
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="/images/mackerel.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="/images/Snapper-under-water-shot.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="/images/how-to-fish-for-flathead-fish.png" class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
+      <nav>
+        <form method="post" action="/logout">
+          <input type="submit" value="logout" />
+        </form>
+        <% } else { %>
+          <p id="reg-home">Sign in to interact with the library and gain access to the community page. If you don't have
+            an account already, sign up here.
+            <a href="/register">Register</a>
+          </p>
+          <a href="/login" id="login-btn">Login</a>
+      </nav>
+      <% } %>
+  </div>
 
-            <h1>Welcome to Fishin' Victoria</h1>
-            
+  <div id="home-imgs">
+    <img src="/images/pexels-photo-69224.jpeg" class="home-img">
+  </div>
+
 
 </body>
